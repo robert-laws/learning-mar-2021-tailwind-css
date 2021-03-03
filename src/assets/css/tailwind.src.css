@@ -8,3 +8,13 @@
     @apply text-6xl;
   }
 } */
+
+@layer components {
+  .btn {
+    @apply active:bg-gray-500 hover:bg-gray-500 hover:text-white cursor-pointer border-gray-500 border-4 rounded-md inline-block p-2 mt-2 mb-4;
+  }
+
+  .btn-purple {
+    @apply active:bg-gray-500 hover:bg-purple-500 border-purple-500;
+  }
+}

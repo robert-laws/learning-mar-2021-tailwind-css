@@ -18,11 +18,14 @@ module.exports = {
         blue: colors.lightBlue,
         gray: colors.trueGray,
         emerald: colors.emerald,
+        teal: colors.teal,
       },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ['active'],
+    },
   },
   plugins: [],
 };
