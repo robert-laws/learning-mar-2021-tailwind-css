@@ -1,4 +1,5 @@
 import './App.css';
+import BooksImage from './images/books.jpg';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           Text Directives
         </p>
         <p className='capitalize'>learning outcomes</p>
-        <p className='overflow-clip overflow-hidden h-24 tracking-normal'>
+        <p className='overflow-clip overflow-hidden h-24 tracking-normal shadow-2xl'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt quas
           numquam modi velit exercitationem quibusdam expedita temporibus
           voluptates omnis eligendi in neque ad provident nostrum atque,
@@ -33,12 +34,57 @@ function App() {
             <li>item5</li>
           </ul>
         </div>
-        <div className='divide-y divide-dashed divide-opacity-20 divide-black m-4 space-y-4 space'>
+        <div className='divide-y divide-dashed divide-opacity-20 divide-black m-4 p-2 space-y-4 space bg-emerald-100 bg-opacity-50'>
           <div>Item #1</div>
           <div>Item #2</div>
           <div>Item #3</div>
           <div>Item #4</div>
           <div>Item #5</div>
+        </div>
+        <div className='m-3 p-3 border bg-gradient-to-b from-red-100 to-blue-100 shadow'>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo enim
+            vero hic quod repudiandae accusantium pariatur repellendus esse
+            sequi quae? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Necessitatibus ratione quo recusandae cum praesentium cumque, id nam
+            impedit magnam cupiditate earum? Facilis, accusamus modi!
+          </p>
+        </div>
+        <div className='m-3 p-3 border bg-gradient-to-l from-red-100'>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo enim
+            vero hic quod repudiandae accusantium pariatur repellendus esse
+            sequi quae? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Necessitatibus ratione quo recusandae cum praesentium cumque, id nam
+            impedit magnam cupiditate earum? Facilis, accusamus modi!
+          </p>
+        </div>
+        <div className='m-3 p-3 border from-green-500 via-blue-400 to-red-500 bg-gradient-to-l'>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo enim
+            vero hic quod repudiandae accusantium pariatur repellendus esse
+            sequi quae? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Necessitatibus ratione quo recusandae cum praesentium cumque, id nam
+            impedit magnam cupiditate earum? Facilis, accusamus modi!
+          </p>
+        </div>
+        <div
+          className='text-white h-96 w-full bg-auto bg-right-bottom'
+          style={{ backgroundImage: `url(${BooksImage})` }}
+        >
+          Auto
+        </div>
+        <div
+          className='text-white h-96 w-full bg-contain bg-no-repeat bg-center'
+          style={{ backgroundImage: `url(${BooksImage})` }}
+        >
+          Contain
+        </div>
+        <div
+          className='text-white h-96 w-full bg-cover bg-bottom'
+          style={{ backgroundImage: `url(${BooksImage})` }}
+        >
+          Cover
         </div>
       </div>
       <button className='btn btn-purple'>New Division</button>
