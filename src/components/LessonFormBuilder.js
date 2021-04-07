@@ -4,6 +4,7 @@ import StaticTextInput from './StaticTextInput';
 import DatePicker from './DatePicker';
 import CoursesContext from '../context/courses/coursesContext';
 import LessonsContext from '../context/lessons/lessonsContext';
+import { setIntervals } from '../utils/formUtils';
 
 const LessonFormBuilder = () => {
   const coursesContext = useContext(CoursesContext);
@@ -16,6 +17,8 @@ const LessonFormBuilder = () => {
     name: '',
     id: '',
   });
+
+  const [durations, setDurations] = useState(null);
 
   useEffect(() => {
     getCourses();
@@ -40,6 +43,11 @@ const LessonFormBuilder = () => {
     },
     [setCourseSelect]
   );
+
+  useEffect(() => {
+    const myDurations = setIntervals(5, 75, 5);
+    setDurations(myDurations);
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -95,7 +103,18 @@ const LessonFormBuilder = () => {
           visible={true}
         />
 
+        {/* Class Date */}
         <DatePicker inputName='session_date' onInput={inputHandler} />
+
+        {/* Class Duration */}
+        {durations && (
+          <Select
+            optionList={durations}
+            onSelect={inputHandler}
+            name='duration'
+            initialText={'Select a session length'}
+          />
+        )}
       </form>
     </div>
   );
