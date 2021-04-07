@@ -4,6 +4,7 @@ import StaticTextInput from './StaticTextInput';
 import DatePicker from './DatePicker';
 import NumberPicker from './NumberPicker';
 import RadioButtonList from './RadioButtonList';
+import TextInput from './TextInput';
 import CoursesContext from '../context/courses/coursesContext';
 import LessonsContext from '../context/lessons/lessonsContext';
 import OptionsContext from '../context/options/optionsContext';
@@ -159,6 +160,14 @@ const LessonFormBuilder = () => {
               checkedList={[]}
             />
           )}
+
+          {/* Class Assignment */}
+          <TextInput
+            inputName={'class_assignment'}
+            onInput={inputHandler}
+            initialValue={''}
+          />
+          <hr />
         </form>
       )}
     </div>
