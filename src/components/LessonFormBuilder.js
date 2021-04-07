@@ -207,6 +207,13 @@ const LessonFormBuilder = () => {
             onInput={inputHandler}
           />
           <hr className='mt-8 mb-4' />
+
+          <button
+            type='submit'
+            className='w-full flex items-center justify-center px-8 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-3 md:text-lg md:px-10'
+          >
+            Submit
+          </button>
         </form>
       )}
     </div>

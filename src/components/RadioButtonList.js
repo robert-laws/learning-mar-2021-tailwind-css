@@ -16,7 +16,7 @@ const RadioButtonList = ({ listName, items, onInput, checkedList }) => {
 
   return (
     <div>
-      <div class='block'>
+      <div className='block'>
         <span className='text-gray-700'>{listName}</span>
         <div className='mt-2'>
           {items.map((item) => (

@@ -56,6 +56,7 @@ const TextInputCollection = ({ listName, onInput }) => {
         />
         <button
           type='button'
+          className='px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 md:py-2 md:text-lg md:px-4'
           onClick={() => removeTextInput(`outcome-${inputNumber}`)}
         >
           Remove
