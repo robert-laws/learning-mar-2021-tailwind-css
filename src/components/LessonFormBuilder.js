@@ -56,6 +56,8 @@ const LessonFormBuilder = () => {
           initialText={'Select a Course'}
         />
 
+        <hr className='mt-8 mb-4' />
+
         <StaticTextInput
           inputName={'course_code'}
           onInput={inputHandler}

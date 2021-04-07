@@ -6,7 +6,7 @@ import coursesReducer from './coursesReducer';
 const CoursesState = ({ children }) => {
   const initialState = {
     course: {},
-    courses: {},
+    courses: [],
     isLoading: true,
   };
 
