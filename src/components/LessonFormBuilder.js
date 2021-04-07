@@ -3,8 +3,10 @@ import Select from './Select';
 import StaticTextInput from './StaticTextInput';
 import DatePicker from './DatePicker';
 import NumberPicker from './NumberPicker';
+import RadioButtonList from './RadioButtonList';
 import CoursesContext from '../context/courses/coursesContext';
 import LessonsContext from '../context/lessons/lessonsContext';
+import OptionsContext from '../context/options/optionsContext';
 import { setIntervals } from '../utils/formUtils';
 
 const LessonFormBuilder = () => {
@@ -13,6 +15,18 @@ const LessonFormBuilder = () => {
 
   const lessonsContext = useContext(LessonsContext);
   const { lesson, buildLesson } = lessonsContext;
+
+  const optionsContext = useContext(OptionsContext);
+  const {
+    informationLiteracyObjectives,
+    thresholdConcepts,
+    modules,
+    librarians,
+    getInformationLiteracyObjectives,
+    getThresholdConcepts,
+    getModules,
+    getLibrarians,
+  } = optionsContext;
 
   const [courseSelect, setCourseSelect] = useState({
     name: '',
@@ -23,7 +37,17 @@ const LessonFormBuilder = () => {
 
   useEffect(() => {
     getCourses();
-  }, [getCourses]);
+    getInformationLiteracyObjectives();
+    getThresholdConcepts();
+    getModules();
+    getLibrarians();
+  }, [
+    getCourses,
+    getInformationLiteracyObjectives,
+    getThresholdConcepts,
+    getModules,
+    getLibrarians,
+  ]);
 
   useEffect(() => {
     if (courseSelect.id !== '') {
@@ -58,72 +82,85 @@ const LessonFormBuilder = () => {
   return (
     <div className='container mx-auto px-4'>
       <h1 className='text-2xl'>Lesson Form</h1>
-      <form onSubmit={handleSubmit}>
-        <Select
-          optionList={courses}
-          onSelect={onSelect}
-          name='courses'
-          initialText={'Select a Course'}
-        />
-
-        <hr className='mt-8 mb-4' />
-
-        <StaticTextInput
-          inputName={'course_code'}
-          onInput={inputHandler}
-          initialValue={''}
-          updateValue={course.title?.rendered || ''}
-          visible={true}
-        />
-        <StaticTextInput
-          inputName={'course_name'}
-          onInput={inputHandler}
-          initialValue={''}
-          updateValue={course.acf?.course_name || ''}
-          visible={true}
-        />
-        <StaticTextInput
-          inputName={'faculty'}
-          onInput={inputHandler}
-          initialValue={''}
-          updateValue={course.acf?.faculty || ''}
-          visible={true}
-        />
-        <StaticTextInput
-          inputName={'semester'}
-          onInput={inputHandler}
-          initialValue={''}
-          updateValue={course.acf?.semester || ''}
-          visible={true}
-        />
-        <StaticTextInput
-          inputName={'year'}
-          onInput={inputHandler}
-          initialValue={''}
-          updateValue={course.acf?.year || ''}
-          visible={true}
-        />
-
-        {/* Class Date */}
-        <DatePicker inputName='session_date' onInput={inputHandler} />
-
-        {/* Class Duration */}
-        {durations && (
+      {isLoading ? (
+        <div>Loading</div>
+      ) : (
+        <form onSubmit={handleSubmit}>
           <Select
-            optionList={durations}
-            onSelect={inputHandler}
-            name='duration'
-            initialText={'Select a session length'}
+            optionList={courses}
+            onSelect={onSelect}
+            name='courses'
+            initialText={'Select a Course'}
           />
-        )}
 
-        {/* Number of Learners */}
-        <NumberPicker
-          inputName='number_of_learners'
-          onInput={inputHandler}
-          initialValue={''}
-        />
-      </form>
+          <hr className='mt-8 mb-4' />
+
+          <StaticTextInput
+            inputName={'course_code'}
+            onInput={inputHandler}
+            initialValue={''}
+            updateValue={course.title?.rendered || ''}
+            visible={true}
+          />
+          <StaticTextInput
+            inputName={'course_name'}
+            onInput={inputHandler}
+            initialValue={''}
+            updateValue={course.acf?.course_name || ''}
+            visible={true}
+          />
+          <StaticTextInput
+            inputName={'faculty'}
+            onInput={inputHandler}
+            initialValue={''}
+            updateValue={course.acf?.faculty || ''}
+            visible={true}
+          />
+          <StaticTextInput
+            inputName={'semester'}
+            onInput={inputHandler}
+            initialValue={''}
+            updateValue={course.acf?.semester || ''}
+            visible={true}
+          />
+          <StaticTextInput
+            inputName={'year'}
+            onInput={inputHandler}
+            initialValue={''}
+            updateValue={course.acf?.year || ''}
+            visible={true}
+          />
+
+          {/* Class Date */}
+          <DatePicker inputName='session_date' onInput={inputHandler} />
+
+          {/* Class Duration */}
+          {durations && (
+            <Select
+              optionList={durations}
+              onSelect={inputHandler}
+              name='duration'
+              initialText={'Select a session length'}
+            />
+          )}
+
+          {/* Number of Learners */}
+          <NumberPicker
+            inputName='number_of_learners'
+            onInput={inputHandler}
+            initialValue={''}
+          />
+
+          {librarians && (
+            <RadioButtonList
+              listName='librarians'
+              items={librarians}
+              onInput={inputHandler}
+              checkedList={[]}
+            />
+          )}
+        </form>
+      )}
     </div>
   );
 };
