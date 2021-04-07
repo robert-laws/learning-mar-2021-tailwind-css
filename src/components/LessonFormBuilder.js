@@ -6,6 +6,7 @@ import NumberPicker from './NumberPicker';
 import RadioButtonList from './RadioButtonList';
 import TextInput from './TextInput';
 import CheckBoxList from './CheckBoxList';
+import TextInputCollection from './TextInputCollection';
 import CoursesContext from '../context/courses/coursesContext';
 import LessonsContext from '../context/lessons/lessonsContext';
 import OptionsContext from '../context/options/optionsContext';
@@ -198,6 +199,13 @@ const LessonFormBuilder = () => {
               checkedList={[]}
             />
           )}
+          <hr className='mt-8 mb-4' />
+
+          {/* Learning Outcomes */}
+          <TextInputCollection
+            listName='learning_outcomes'
+            onInput={inputHandler}
+          />
           <hr className='mt-8 mb-4' />
         </form>
       )}
