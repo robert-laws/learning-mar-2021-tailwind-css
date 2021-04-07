@@ -2,6 +2,7 @@ import React, { useState, useCallback, useContext, useEffect } from 'react';
 import Select from './Select';
 import StaticTextInput from './StaticTextInput';
 import DatePicker from './DatePicker';
+import NumberPicker from './NumberPicker';
 import CoursesContext from '../context/courses/coursesContext';
 import LessonsContext from '../context/lessons/lessonsContext';
 import { setIntervals } from '../utils/formUtils';
@@ -115,6 +116,13 @@ const LessonFormBuilder = () => {
             initialText={'Select a session length'}
           />
         )}
+
+        {/* Number of Learners */}
+        <NumberPicker
+          inputName='number_of_learners'
+          onInput={inputHandler}
+          initialValue={''}
+        />
       </form>
     </div>
   );
