@@ -5,6 +5,7 @@ import DatePicker from './DatePicker';
 import NumberPicker from './NumberPicker';
 import RadioButtonList from './RadioButtonList';
 import TextInput from './TextInput';
+import CheckBoxList from './CheckBoxList';
 import CoursesContext from '../context/courses/coursesContext';
 import LessonsContext from '../context/lessons/lessonsContext';
 import OptionsContext from '../context/options/optionsContext';
@@ -167,7 +168,17 @@ const LessonFormBuilder = () => {
             onInput={inputHandler}
             initialValue={''}
           />
-          <hr />
+          <hr className='mt-8 mb-4' />
+
+          {informationLiteracyObjectives && (
+            <CheckBoxList
+              listName={'information_literacy_objectives'}
+              items={informationLiteracyObjectives}
+              onInput={inputHandler}
+              checkedList={[]}
+            />
+          )}
+          <hr className='mt-8 mb-4' />
         </form>
       )}
     </div>
