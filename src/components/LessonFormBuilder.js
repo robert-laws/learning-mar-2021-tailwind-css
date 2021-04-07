@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useContext, useEffect } from 'react';
 import Select from './Select';
 import StaticTextInput from './StaticTextInput';
+import DatePicker from './DatePicker';
 import CoursesContext from '../context/courses/coursesContext';
 import LessonsContext from '../context/lessons/lessonsContext';
 
@@ -93,6 +94,8 @@ const LessonFormBuilder = () => {
           updateValue={course.acf?.year || ''}
           visible={true}
         />
+
+        <DatePicker inputName='session_date' onInput={inputHandler} />
       </form>
     </div>
   );
