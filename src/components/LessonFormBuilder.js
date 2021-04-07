@@ -179,6 +179,26 @@ const LessonFormBuilder = () => {
             />
           )}
           <hr className='mt-8 mb-4' />
+
+          {thresholdConcepts && (
+            <CheckBoxList
+              listName={'threshold_concepts'}
+              items={thresholdConcepts}
+              onInput={inputHandler}
+              checkedList={[]}
+            />
+          )}
+          <hr className='mt-8 mb-4' />
+
+          {modules && (
+            <CheckBoxList
+              listName={'modules'}
+              items={modules}
+              onInput={inputHandler}
+              checkedList={[]}
+            />
+          )}
+          <hr className='mt-8 mb-4' />
         </form>
       )}
     </div>
