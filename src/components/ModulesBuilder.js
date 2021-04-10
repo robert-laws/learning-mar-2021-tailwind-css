@@ -139,7 +139,11 @@ const ModulesBuilder = ({ handleUpdateStep }) => {
       let singleModDetail = '';
       Object.entries(selectedModulesDetails).forEach(([key, value]) => {
         if (parseInt(key) === modNumber) {
-          singleModDetail += `<li id='mod-${modName}'><span>${value.time}</span><p>${value.text}</p></li>`;
+          singleModDetail += `<li id='mod-${modName}'><p><strong>${modName
+            .split('-')
+            .join(' ')}</strong></p><p>${value.time} minutes</p><p>details: ${
+            value.text
+          }</p></li>`;
         }
       });
 

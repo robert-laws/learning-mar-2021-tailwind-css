@@ -17,7 +17,7 @@ const LessonFormBuilder = ({ handleUpdateStep }) => {
   const { getCourses, getCourse, courses, course, isLoading } = coursesContext;
 
   const lessonsContext = useContext(LessonsContext);
-  const { lesson, buildLesson } = lessonsContext;
+  const { buildLesson } = lessonsContext;
 
   const optionsContext = useContext(OptionsContext);
   const {

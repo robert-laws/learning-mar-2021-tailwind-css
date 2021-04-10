@@ -64,7 +64,7 @@ const TextInputCollection = ({ listName, onInput, placeholder }) => {
         </button>
       </div>,
     ]);
-  }, [inputNumber, inputHandler, removeTextInput]);
+  }, [inputNumber, inputHandler, removeTextInput, placeholder]);
 
   return (
     <>
