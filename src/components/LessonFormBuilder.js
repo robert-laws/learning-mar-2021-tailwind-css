@@ -4,7 +4,6 @@ import StaticTextInput from './StaticTextInput';
 import DatePicker from './DatePicker';
 import NumberPicker from './NumberPicker';
 import RadioButtonList from './RadioButtonList';
-import TextInput from './TextInput';
 import TextAreaInput from './TextAreaInput';
 import CheckBoxList from './CheckBoxList';
 import TextInputCollection from './TextInputCollection';
@@ -24,11 +23,9 @@ const LessonFormBuilder = () => {
   const {
     informationLiteracyObjectives,
     thresholdConcepts,
-    modules,
     librarians,
     getInformationLiteracyObjectives,
     getThresholdConcepts,
-    getModules,
     getLibrarians,
   } = optionsContext;
 
@@ -43,13 +40,11 @@ const LessonFormBuilder = () => {
     getCourses();
     getInformationLiteracyObjectives();
     getThresholdConcepts();
-    getModules();
     getLibrarians();
   }, [
     getCourses,
     getInformationLiteracyObjectives,
     getThresholdConcepts,
-    getModules,
     getLibrarians,
   ]);
 
@@ -258,30 +253,11 @@ const LessonFormBuilder = () => {
 
           <hr className='mt-8 mb-4' />
 
-          <div className='mt-8 grid grid-cols-1 md:grid-cols-1 gap-6 items-start'>
-            <div className='grid grid-cols-1 gap-6'>
-              <h2 className='text-2xl'>Instruction Modules</h2>
-            </div>
-          </div>
-
-          <div className='mt-8 mb-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-start'>
-            <div className='grid grid-cols-1 gap-6'>
-              {modules && (
-                <CheckBoxList
-                  listName={'modules'}
-                  items={modules}
-                  onInput={inputHandler}
-                  checkedList={[]}
-                />
-              )}
-            </div>
-          </div>
-
           <button
             type='submit'
             className='w-full flex items-center justify-center px-8 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-3 md:text-lg md:px-10'
           >
-            Submit
+            Next Step - Add Modules
           </button>
         </form>
       )}
