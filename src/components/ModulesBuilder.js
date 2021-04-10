@@ -1,14 +1,19 @@
 import React, { useState, useCallback, useContext, useEffect } from 'react';
 import { Card } from './Card';
+import { modulesDuration } from '../utils/formUtils';
 import update from 'immutability-helper';
 import CheckBoxList from './CheckBoxList';
 import Select from './Select';
 import TextInput from './TextInput';
 import OptionsContext from '../context/options/optionsContext';
+import LessonsContext from '../context/lessons/lessonsContext';
 
 const ModulesBuilder = () => {
   const optionsContext = useContext(OptionsContext);
   const { modules, getModules, addCustomModule } = optionsContext;
+
+  const lessonsContext = useContext(LessonsContext);
+  const { buildLesson } = lessonsContext;
 
   const [formValues, setFormValues] = useState({});
   const [modulesList, setModulesList] = useState([]);
@@ -128,9 +133,7 @@ const ModulesBuilder = () => {
     });
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
+  const buildModuleList = () => {
     let modules_detail = '<ul>';
 
     modules_detail += modulesList.map((module) => {
@@ -149,7 +152,16 @@ const ModulesBuilder = () => {
 
     modules_detail += '</ul>';
 
-    console.log(modules_detail.replace(/,/g, ''));
+    return modules_detail;
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const mods = buildModuleList();
+    const lessonMods = mods.replace(/,/g, '');
+
+    buildLesson('modules_details', lessonMods);
   };
 
   return (
@@ -202,11 +214,7 @@ const ModulesBuilder = () => {
                     />
                     <Select
                       name={`${mod.id}-time`}
-                      optionList={[
-                        { id: '10', title: '10' },
-                        { id: '15', title: '15' },
-                        { id: '20', title: '20' },
-                      ]}
+                      optionList={modulesDuration}
                       onSelect={handleModuleDetails}
                     />
                   </div>
