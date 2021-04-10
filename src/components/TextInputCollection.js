@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import TextInput from './TextInput';
 
-const TextInputCollection = ({ listName, onInput }) => {
+const TextInputCollection = ({ listName, onInput, placeholder }) => {
   const [formValues, setFormValues] = useState({});
   const [finalHtml, setFinalHtml] = useState('');
 
@@ -53,6 +53,7 @@ const TextInputCollection = ({ listName, onInput }) => {
           inputName={`outcome-${inputNumber}`}
           initialValue=''
           onInput={inputHandler}
+          placeholder={placeholder}
         />
         <button
           type='button'

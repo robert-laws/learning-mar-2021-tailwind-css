@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useInput } from '../hooks/useInput';
 
-const NumberPicker = ({ inputName, onInput, initialValue }) => {
+const NumberPicker = ({ inputName, onInput, placeholder, initialValue }) => {
   const [value, onChange] = useInput(initialValue);
 
   useEffect(() => {
@@ -20,6 +20,7 @@ const NumberPicker = ({ inputName, onInput, initialValue }) => {
         max='50'
         value={value}
         onChange={onChange}
+        placeholder={placeholder}
       ></input>
     </label>
   );

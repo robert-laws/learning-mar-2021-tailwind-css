@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useInput } from '../hooks/useInput';
 
-const TextInput = ({ inputName, onInput, initialValue }) => {
+const TextInput = ({ inputName, onInput, placeholder, initialValue }) => {
   const [value, onChange] = useInput(initialValue);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const TextInput = ({ inputName, onInput, initialValue }) => {
         id={inputName}
         value={value}
         onChange={onChange}
-        placeholder=''
+        placeholder={placeholder}
       />
     </label>
   );
