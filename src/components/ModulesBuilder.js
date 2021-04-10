@@ -8,7 +8,7 @@ import TextInput from './TextInput';
 import OptionsContext from '../context/options/optionsContext';
 import LessonsContext from '../context/lessons/lessonsContext';
 
-const ModulesBuilder = () => {
+const ModulesBuilder = ({ handleUpdateStep }) => {
   const optionsContext = useContext(OptionsContext);
   const { modules, getModules, addCustomModule } = optionsContext;
 
@@ -24,10 +24,6 @@ const ModulesBuilder = () => {
   useEffect(() => {
     getModules();
   }, [getModules]);
-
-  const style = {
-    width: 280,
-  };
 
   const moveCard = useCallback(
     (dragIndex, hoverIndex) => {
@@ -162,6 +158,8 @@ const ModulesBuilder = () => {
     const lessonMods = mods.replace(/,/g, '');
 
     buildLesson('modules_details', lessonMods);
+
+    handleUpdateStep(3);
   };
 
   return (
@@ -200,7 +198,7 @@ const ModulesBuilder = () => {
           {modulesList && modulesList.length > 0 ? (
             <>
               <div className='grid grid-cols-1 gap-6'>
-                <div style={style}>
+                <div className='w-full'>
                   {modulesList.map((module, i) => renderCard(module, i))}
                 </div>
               </div>
@@ -222,7 +220,7 @@ const ModulesBuilder = () => {
               </div>
             </>
           ) : (
-            <div>Select at least one modules</div>
+            <div>Select at least one module</div>
           )}
         </div>
         <div className='mt-8 mb-8 grid grid-cols-1 gap-6 items-start'>

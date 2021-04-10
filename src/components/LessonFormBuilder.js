@@ -12,7 +12,7 @@ import LessonsContext from '../context/lessons/lessonsContext';
 import OptionsContext from '../context/options/optionsContext';
 import { setIntervals } from '../utils/formUtils';
 
-const LessonFormBuilder = () => {
+const LessonFormBuilder = ({ handleUpdateStep }) => {
   const coursesContext = useContext(CoursesContext);
   const { getCourses, getCourse, courses, course, isLoading } = coursesContext;
 
@@ -75,7 +75,7 @@ const LessonFormBuilder = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(lesson);
+    handleUpdateStep(2);
   };
 
   return (
