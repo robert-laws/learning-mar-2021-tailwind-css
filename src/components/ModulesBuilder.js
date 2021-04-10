@@ -128,7 +128,9 @@ const ModulesBuilder = () => {
     });
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
     let modules_detail = '<ul>';
 
     modules_detail += modulesList.map((module) => {
@@ -136,7 +138,7 @@ const ModulesBuilder = () => {
       let modName = module.name.replace(/\s+/g, '-').toLowerCase();
 
       let singleModDetail = '';
-      Object.entries(selectedModulesDetails).map(([key, value]) => {
+      Object.entries(selectedModulesDetails).forEach(([key, value]) => {
         if (parseInt(key) === modNumber) {
           singleModDetail += `<li id='mod-${modName}'><span>${value.time}</span><p>${value.text}</p></li>`;
         }
