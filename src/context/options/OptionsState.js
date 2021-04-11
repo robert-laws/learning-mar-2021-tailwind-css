@@ -53,14 +53,19 @@ const OptionsState = ({ children }) => {
   }, [dispatch]);
 
   const getModules = useCallback(async () => {
-    let restURL = `${restRoot}/wp/v2/modules?_fields=id,name&order=asc&per_page=15`;
+    let restURL = `${restRoot}/wp/v2/instruction_modules?_fields=id,title&order=asc&per_page=15`;
 
     try {
       const response = await fetch(restURL);
       const data = await response.json();
 
+      const modulesData = data.map((module) => ({
+        id: module.id,
+        name: module.title.rendered,
+      }));
+
       if (data) {
-        dispatch({ type: GET_MODULES, payload: data });
+        dispatch({ type: GET_MODULES, payload: modulesData });
       }
     } catch (error) {
       console.log(error);

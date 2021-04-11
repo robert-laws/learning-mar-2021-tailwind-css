@@ -4,6 +4,7 @@ import StaticTextInput from './StaticTextInput';
 import DatePicker from './DatePicker';
 import NumberPicker from './NumberPicker';
 import RadioButtonList from './RadioButtonList';
+import TextInput from './TextInput';
 import TextAreaInput from './TextAreaInput';
 import CheckBoxList from './CheckBoxList';
 import TextInputCollection from './TextInputCollection';
@@ -187,6 +188,18 @@ const LessonFormBuilder = ({ handleUpdateStep }) => {
                 />
               )}
             </div>
+            <div className='grid grid-cols-1 col-span-2 gap-6'>
+              {/* Class Assignment */}
+              <TextInput
+                inputName={'co_instructor'}
+                onInput={inputHandler}
+                placeholder={'Co-Instructor'}
+                initialValue={''}
+              />
+            </div>
+          </div>
+
+          <div className='mt-8 grid grid-cols-1 md:grid-cols-6 gap-6 items-start'>
             <div className='grid grid-cols-1 col-span-2 gap-6'>
               {/* Class Assignment */}
               <TextAreaInput

@@ -1,10 +1,41 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import LessonsContext from '../context/lessons/lessonsContext';
 import OptionsContext from '../context/options/optionsContext';
 
 const ReviewLesson = ({ handleUpdateStep }) => {
   const lessonsContext = useContext(LessonsContext);
   const { lesson } = lessonsContext;
+
+  const [restLesson, setRestLesson] = useState(null);
+
+  useEffect(() => {
+    const preparedLesson = {
+      status: 'publish',
+      information_literacy_objectives: lesson.information_literacy_objectives,
+      threshold_concepts: lesson.threshold_concepts,
+      librarians: lesson.librarians,
+      title: `${lesson.course_code} - ${lesson.course_name} - ${
+        lesson.semester
+      } ${lesson.year} - ${lesson.faculty.split(',')[0]}`,
+      fields: {
+        course_code: lesson.course_code,
+        course_title: lesson.course_name,
+        faculty_first_name: lesson.faculty.split(',')[0],
+        faculty_last_name: lesson.faculty.split(',')[1],
+        year: lesson.year,
+        semester: lesson.semester,
+        co_instructor: lesson.co_instructor,
+        session_date: lesson.session_date,
+        duration_of_session: lesson.duration,
+        number_of_learners: lesson.number_of_learners,
+        class_assignment: lesson.class_assignment,
+        learning_outcomes: lesson.learning_outcomes,
+        modules_details: lesson.modules_details,
+      },
+    };
+
+    setRestLesson(preparedLesson);
+  }, [lesson]);
 
   const optionsContext = useContext(OptionsContext);
   const {
@@ -36,6 +67,12 @@ const ReviewLesson = ({ handleUpdateStep }) => {
       return item.name;
     });
     return values;
+  };
+
+  const handleSentToRestApi = (event) => {
+    event.preventDefault();
+
+    console.log(restLesson);
   };
 
   return (
@@ -117,6 +154,14 @@ const ReviewLesson = ({ handleUpdateStep }) => {
       </div>
       <div className='mt-8 grid grid-cols-5 gap-6 items-start'>
         <div className='grid grid-cols-1 gap-6'>
+          <h3 className='text-xl'>Co-Instructor</h3>
+        </div>
+        <div className='grid grid-cols-1 col-span-4 gap-6'>
+          <p>{lesson.co_instructor}</p>
+        </div>
+      </div>
+      <div className='mt-8 grid grid-cols-5 gap-6 items-start'>
+        <div className='grid grid-cols-1 gap-6'>
           <h3 className='text-xl'>Learning Outcomes</h3>
         </div>
         <div className='grid grid-cols-1 col-span-4 gap-6'>
@@ -158,6 +203,18 @@ const ReviewLesson = ({ handleUpdateStep }) => {
         </div>
         <div className='grid grid-cols-1 col-span-4 gap-6'>
           <div dangerouslySetInnerHTML={{ __html: lesson.modules_details }} />
+        </div>
+      </div>
+
+      <div className='mt-8 mb-8 grid grid-cols-1 gap-6 items-start'>
+        <div className='grid grid-cols-1 col-span-1 gap-6'>
+          <button
+            type='button'
+            onClick={handleSentToRestApi}
+            className='w-full flex items-center justify-center px-8 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-3 md:text-lg md:px-10'
+          >
+            Save Lesson
+          </button>
         </div>
       </div>
     </div>
