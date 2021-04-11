@@ -20,8 +20,8 @@ const ReviewLesson = ({ handleUpdateStep }) => {
       fields: {
         course_code: lesson.course_code,
         course_title: lesson.course_name,
-        faculty_first_name: lesson.faculty.split(',')[0],
-        faculty_last_name: lesson.faculty.split(',')[1],
+        faculty_first_name: lesson.faculty.split(',')[1].trim(),
+        faculty_last_name: lesson.faculty.split(',')[0],
         year: lesson.year,
         semester: lesson.semester,
         co_instructor: lesson.co_instructor,
@@ -31,6 +31,7 @@ const ReviewLesson = ({ handleUpdateStep }) => {
         class_assignment: lesson.class_assignment,
         learning_outcomes: lesson.learning_outcomes,
         modules_details: lesson.modules_details,
+        resources: lesson.resources,
       },
     };
 
@@ -166,6 +167,14 @@ const ReviewLesson = ({ handleUpdateStep }) => {
         </div>
         <div className='grid grid-cols-1 col-span-4 gap-6'>
           <div dangerouslySetInnerHTML={{ __html: lesson.learning_outcomes }} />
+        </div>
+      </div>
+      <div className='mt-8 grid grid-cols-5 gap-6 items-start'>
+        <div className='grid grid-cols-1 gap-6'>
+          <h3 className='text-xl'>Resources</h3>
+        </div>
+        <div className='grid grid-cols-1 col-span-4 gap-6'>
+          <div dangerouslySetInnerHTML={{ __html: lesson.resources }} />
         </div>
       </div>
 

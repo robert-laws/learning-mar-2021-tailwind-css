@@ -48,9 +48,9 @@ const TextInputCollection = ({ listName, onInput, placeholder }) => {
   useEffect(() => {
     setFormFields((prevState) => [
       ...prevState,
-      <div id={`outcome-${inputNumber}`}>
+      <div id={`${listName}-${inputNumber}`}>
         <TextInput
-          inputName={`outcome-${inputNumber}`}
+          inputName={`${listName}-${inputNumber}`}
           initialValue=''
           onInput={inputHandler}
           placeholder={placeholder}

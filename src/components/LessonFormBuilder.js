@@ -265,6 +265,24 @@ const LessonFormBuilder = ({ handleUpdateStep }) => {
           </div>
 
           <hr className='mt-8 mb-4' />
+          <div className='mt-8 grid grid-cols-1 md:grid-cols-1 gap-6 items-start'>
+            <div className='grid grid-cols-1 gap-6'>
+              <h2 className='text-2xl'>Resources</h2>
+            </div>
+          </div>
+
+          <div className='mt-8 grid grid-cols-1 gap-6 items-start'>
+            <div className='grid grid-cols-1 gap-6'>
+              {/* Resources */}
+              <TextInputCollection
+                listName='resources'
+                onInput={inputHandler}
+                placeholder={'Resources'}
+              />
+            </div>
+          </div>
+
+          <hr className='mt-8 mb-4' />
 
           <button
             type='submit'
