@@ -5,3 +5,35 @@
 .hide {
   display: none;
 }
+
+/* IE and EDGE */
+progress {
+  /* RESETS */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+
+  width: 100%;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #ccc;
+  color: rgb(43, 142, 223);
+}
+
+/* WEBKIT BROWSERS - CHROME, OPERA AND SAFARI */
+progress::-webkit-progress-bar {
+  background-color: #ccc;
+  border-radius: 20px;
+}
+
+progress::-webkit-progress-value {
+  background-color: rgb(43, 142, 223);
+  border-radius: 20px;
+}
+
+/* MOZILLA FIREFOX */
+progress::-moz-progress-bar {
+  background-color: rgb(43, 142, 223);
+  border-radius: 20px;
+}

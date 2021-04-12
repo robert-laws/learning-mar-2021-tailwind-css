@@ -12,8 +12,15 @@ const MyLesson = () => {
     setFormStep(stepValue);
   };
 
+  const barPercent = (formStep / 3) * 100;
+
   return (
     <>
+      <h1 className='text-2xl text-blue-800'>Build a New Lesson</h1>
+      <hr className='mt-8 mb-4' />
+      <div className='pt-1 mx-8'>
+        <progress id='file' max='100' value={barPercent}></progress>
+      </div>
       {formStep === 1 && <LessonFormBuilder handleUpdateStep={updateStep} />}
       {formStep === 2 && (
         <DndProvider backend={HTML5Backend}>
