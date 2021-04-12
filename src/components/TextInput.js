@@ -10,10 +10,12 @@ const TextInput = ({ inputName, onInput, placeholder, initialValue }) => {
 
   return (
     <label className='block'>
-      <span className='text-gray-700'>{inputName.split('_').join(' ')}</span>
+      <label htmlFor={inputName} className='block font-normal text-gray-700'>
+        {inputName.split('_').join(' ')}
+      </label>
       <input
         type='text'
-        className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'
+        className='mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-50'
         name={inputName}
         id={inputName}
         value={value}

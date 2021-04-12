@@ -4,7 +4,7 @@ import { modulesDuration } from '../utils/formUtils';
 import update from 'immutability-helper';
 import CheckBoxList from './CheckBoxList';
 import Select from './Select';
-import TextInput from './TextInput';
+import TextAreaInput from './TextAreaInput';
 import OptionsContext from '../context/options/optionsContext';
 import LessonsContext from '../context/lessons/lessonsContext';
 
@@ -210,9 +210,10 @@ const ModulesBuilder = ({ handleUpdateStep }) => {
                 {modulesList.map((mod) => (
                   <div key={mod.id}>
                     <h5>{mod.name}</h5>
-                    <TextInput
+                    <TextAreaInput
                       inputName={`${mod.id}-text`}
                       onInput={handleModuleDetails}
+                      initialValue={mod.acf.description}
                     />
                     <Select
                       name={`${mod.id}-time`}

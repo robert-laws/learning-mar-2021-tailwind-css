@@ -199,8 +199,8 @@ const LessonFormBuilder = ({ handleUpdateStep }) => {
             </div>
           </div>
 
-          <div className='mt-8 grid grid-cols-1 md:grid-cols-6 gap-6 items-start'>
-            <div className='grid grid-cols-1 col-span-2 gap-6'>
+          <div className='mt-8 grid grid-cols-1 md:grid-cols-1 gap-6 items-start'>
+            <div className='grid grid-cols-1 gap-6'>
               {/* Class Assignment */}
               <TextAreaInput
                 inputName={'class_assignment'}
