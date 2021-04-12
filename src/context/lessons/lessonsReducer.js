@@ -1,4 +1,4 @@
-import { BUILD_LESSON, GET_LESSONS } from '../types';
+import { BUILD_LESSON, GET_LESSONS, GET_LESSON } from '../types';
 
 const lessonsReducer = (state, action) => {
   switch (action.type) {
@@ -18,6 +18,15 @@ const lessonsReducer = (state, action) => {
         ...state,
         lessons: action.payload,
         isLoadingLesson: false,
+      };
+    }
+
+    case GET_LESSON: {
+      return {
+        ...state,
+        lesson: state.lessons.find(
+          (lesson) => lesson.id === parseInt(action.payload)
+        ),
       };
     }
 

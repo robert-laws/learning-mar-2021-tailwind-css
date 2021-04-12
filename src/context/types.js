@@ -13,3 +13,4 @@ export const ADD_CUSTOM_MODULES = 'ADD_CUSTOM_MODULE';
 // LESSONS
 export const BUILD_LESSON = 'BUILD_LESSON';
 export const GET_LESSONS = 'GET_LESSONS';
+export const GET_LESSON = 'GET_LESSON';

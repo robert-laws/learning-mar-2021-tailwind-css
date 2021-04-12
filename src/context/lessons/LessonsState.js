@@ -1,11 +1,11 @@
 import React, { useReducer, useCallback } from 'react';
-import { BUILD_LESSON, GET_LESSONS } from '../types';
+import { BUILD_LESSON, GET_LESSONS, GET_LESSON } from '../types';
 import LessonsContext from './lessonsContext';
 import lessonsReducer from './lessonsReducer';
 
 const LessonsState = ({ children }) => {
   const initialState = {
-    lesson: {},
+    lesson: null,
     lessons: null,
     isLoadingLesson: true,
   };
@@ -30,6 +30,13 @@ const LessonsState = ({ children }) => {
     }
   }, [dispatch]);
 
+  const getLesson = useCallback(
+    (id) => {
+      dispatch({ type: GET_LESSON, payload: id });
+    },
+    [dispatch]
+  );
+
   const buildLesson = useCallback(
     (inputName, value) => {
       dispatch({ type: BUILD_LESSON, payload: { inputName, value } });
@@ -44,6 +51,7 @@ const LessonsState = ({ children }) => {
         lessons: state.lessons,
         isLoadingLesson: state.isLoadingLesson,
         getLessons,
+        getLesson,
         buildLesson,
       }}
     >

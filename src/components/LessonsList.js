@@ -1,13 +1,10 @@
-import React, { useContext, useEffect } from 'react';
-import LessonsContext from '../context/lessons/lessonsContext';
+import React from 'react';
 
-const LessonsList = () => {
-  const lessonsContext = useContext(LessonsContext);
-  const { lessons, getLessons, isLoadingLesson } = lessonsContext;
-
-  useEffect(() => {
-    getLessons();
-  }, [getLessons]);
+const LessonsList = ({ lessons, isLoadingLesson, getLesson }) => {
+  const handleClick = (event) => {
+    const lessonId = event.target.id;
+    getLesson(lessonId);
+  };
 
   return (
     <>
@@ -18,8 +15,9 @@ const LessonsList = () => {
           {lessons &&
             lessons.map((lesson) => (
               <li key={lesson.id}>
-                <a
-                  href={lesson.id}
+                <button
+                  id={lesson.id}
+                  onClick={handleClick}
                   dangerouslySetInnerHTML={{ __html: lesson.title.rendered }}
                 />
               </li>
