@@ -1,11 +1,24 @@
 import React from 'react';
 
-const Lesson = ({ lesson }) => {
+const Lesson = ({
+  lesson,
+  informationLiteracyObjectives,
+  thresholdConcepts,
+  librarians,
+}) => {
+  const getNames = (namesArray, contextArray) => {
+    let values = namesArray.map((id) => {
+      let item = contextArray.find((item) => item.id === parseInt(id));
+      return item.name;
+    });
+    return values;
+  };
+
   return (
     <>
       {lesson ? (
         <div className='container mx-auto px-4'>
-          <h1 className='text-3xl'>Review Lesson</h1>
+          <h1 className='text-2xl'>Lesson Details</h1>
           <div className='mt-8 grid grid-cols-5 gap-6 items-start'>
             <div className='grid grid-cols-1 gap-6'>
               <h3 className='text-xl'>Course Code</h3>
@@ -80,7 +93,7 @@ const Lesson = ({ lesson }) => {
             </div>
             <div className='grid grid-cols-1 col-span-4 gap-6'>
               {/* <p>{getLibrarianName(lesson.librarians)}</p> */}
-              <p>{lesson.librarians}</p>
+              <p>{getNames(lesson.librarians, librarians)}</p>
             </div>
           </div>
           <div className='mt-8 grid grid-cols-5 gap-6 items-start'>
@@ -128,10 +141,11 @@ const Lesson = ({ lesson }) => {
             </div>
             <div className='grid grid-cols-1 col-span-4 gap-6'>
               <ul>
-                {/* {lesson.information_literacy_objectives &&
-                getInfoLitObjectsNames(
-                  lesson.information_literacy_objectives
-                ).map((objective) => <li key={objective}>{objective}</li>)} */}
+                {lesson.information_literacy_objectives &&
+                  getNames(
+                    lesson.information_literacy_objectives,
+                    informationLiteracyObjectives
+                  ).map((objective) => <li key={objective}>{objective}</li>)}
               </ul>
             </div>
           </div>
@@ -142,10 +156,11 @@ const Lesson = ({ lesson }) => {
             </div>
             <div className='grid grid-cols-1 col-span-4 gap-6'>
               <ul>
-                {/* {lesson.threshold_concepts &&
-                getThresholdConceptNames(
-                  lesson.threshold_concepts
-                ).map((concept) => <li key={concept}>{concept}</li>)} */}
+                {lesson.threshold_concepts &&
+                  getNames(
+                    lesson.threshold_concepts,
+                    thresholdConcepts
+                  ).map((concept) => <li key={concept}>{concept}</li>)}
               </ul>
             </div>
           </div>
@@ -164,18 +179,6 @@ const Lesson = ({ lesson }) => {
               ) : (
                 <div>no information...</div>
               )}
-            </div>
-          </div>
-
-          <div className='mt-8 mb-8 grid grid-cols-1 gap-6 items-start'>
-            <div className='grid grid-cols-1 col-span-1 gap-6'>
-              {/* <button
-              type='button'
-              onClick={handleSentToRestApi}
-              className='w-full flex items-center justify-center px-8 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-3 md:text-lg md:px-10'
-            >
-              Save Lesson
-            </button> */}
             </div>
           </div>
         </div>
