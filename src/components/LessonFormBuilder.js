@@ -87,11 +87,12 @@ const LessonFormBuilder = ({ handleUpdateStep }) => {
         <div>Loading</div>
       ) : (
         <form onSubmit={handleSubmit}>
-          <CoursesSelect
+          <Select
             optionList={courses}
             onSelect={onSelect}
             name='courses'
             initialText={'Select a course to load details'}
+            complex={true}
           />
 
           <hr className='mt-8 mb-4' />

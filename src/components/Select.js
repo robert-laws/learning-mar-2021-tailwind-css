@@ -6,6 +6,7 @@ const Select = ({
   onSelect,
   name,
   initialText = 'Make a Selection',
+  complex = false,
 }) => {
   const [value, onChange] = useInput('');
 
@@ -23,11 +24,17 @@ const Select = ({
         onChange={onChange}
       >
         <option value=''>{initialText}</option>
-        {optionList.map((item) => (
-          <option key={item.id} value={item.id}>{`${
-            item.title?.rendered || item.title
-          }`}</option>
-        ))}
+        {complex
+          ? optionList.map((item) => (
+              <option key={item.id} value={item.id}>{`${
+                item.title?.rendered || item.title
+              } -- ${item.acf.faculty_last_name}`}</option>
+            ))
+          : optionList.map((item) => (
+              <option key={item.id} value={item.id}>{`${
+                item.title?.rendered || item.title
+              }`}</option>
+            ))}
       </select>
     </label>
   );
