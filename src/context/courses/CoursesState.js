@@ -16,7 +16,7 @@ const CoursesState = ({ children }) => {
     'https://headless-rest.guqlibrary.georgetown.domains/wp-json';
 
   const getCourses = useCallback(async () => {
-    let restURL = `${restRoot}/wp/v2/courses?per_page=110&_fields=id,title,acf&order=asc`;
+    let restURL = `${restRoot}/wp/v2/courses?per_page=125&_fields=id,title,acf&orderby=title&order=asc`;
 
     try {
       const response = await fetch(restURL);

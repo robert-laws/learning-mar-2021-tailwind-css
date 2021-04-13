@@ -14,14 +14,12 @@ const ReviewLesson = ({ handleUpdateStep }) => {
       information_literacy_objectives: lesson.information_literacy_objectives,
       threshold_concepts: lesson.threshold_concepts,
       librarians: lesson.librarians,
-      title: `${lesson.course_code} - ${lesson.course_name} - ${
-        lesson.semester
-      } ${lesson.year} - ${lesson.faculty.split(',')[0]}`,
+      title: `${lesson.course_code} - ${lesson.course_name} - ${lesson.semester} ${lesson.year} - ${lesson.faculty_last_name}`,
       fields: {
         course_code: lesson.course_code,
         course_title: lesson.course_name,
-        faculty_first_name: lesson.faculty.split(',')[1].trim(),
-        faculty_last_name: lesson.faculty.split(',')[0],
+        faculty_first_name: lesson.faculty_first_name,
+        faculty_last_name: lesson.faculty_last_name,
         year: lesson.year,
         semester: lesson.semester,
         co_instructor: lesson.co_instructor,
@@ -100,7 +98,9 @@ const ReviewLesson = ({ handleUpdateStep }) => {
           <h3 className='text-xl'>Faculty</h3>
         </div>
         <div className='grid grid-cols-1 col-span-4 gap-6'>
-          <p>{lesson.faculty}</p>
+          <p>
+            {lesson.faculty_first_name} {lesson.faculty_last_name}
+          </p>
         </div>
       </div>
       <div className='mt-8 grid grid-cols-5 gap-6 items-start'>

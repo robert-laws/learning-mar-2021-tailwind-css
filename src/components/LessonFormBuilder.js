@@ -120,10 +120,20 @@ const LessonFormBuilder = ({ handleUpdateStep }) => {
             </div>
             <div className='grid grid-cols-1 gap-6'>
               <StaticTextInput
-                inputName={'faculty'}
+                inputName={'faculty_first_name'}
                 onInput={inputHandler}
                 initialValue={''}
-                updateValue={course.acf?.faculty || ''}
+                updateValue={course.acf?.faculty_first_name || ''}
+                visible={true}
+              />
+            </div>
+
+            <div className='grid grid-cols-1 gap-6'>
+              <StaticTextInput
+                inputName={'faculty_last_name'}
+                onInput={inputHandler}
+                initialValue={''}
+                updateValue={course.acf?.faculty_last_name || ''}
                 visible={true}
               />
             </div>
