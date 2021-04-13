@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useContext, useEffect } from 'react';
 import Select from './Select';
+import CoursesSelect from './CoursesSelect';
 import StaticTextInput from './StaticTextInput';
 import DatePicker from './DatePicker';
 import NumberPicker from './NumberPicker';
@@ -86,7 +87,7 @@ const LessonFormBuilder = ({ handleUpdateStep }) => {
         <div>Loading</div>
       ) : (
         <form onSubmit={handleSubmit}>
-          <Select
+          <CoursesSelect
             optionList={courses}
             onSelect={onSelect}
             name='courses'
